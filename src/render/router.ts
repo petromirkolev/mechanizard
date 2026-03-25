@@ -15,8 +15,9 @@ import { deleteBikeModal } from '../modals/deleteBikeModal';
 import { editBikeModal } from '../modals/editBikeModal';
 import { renderGarageView } from '../pages/garage/garageView';
 import {
-  renderMaintenanceView,
   renderMaintenanceBikeSelect,
+  showCurrent,
+  showHistory,
 } from '../pages/maintenance/maintenanceView';
 
 export function initRouter(): void {
@@ -25,6 +26,8 @@ export function initRouter(): void {
 
     const el = target.closest<HTMLElement>('[data-action]');
     if (!el) return;
+
+    const bikeId = el.dataset.bikeid;
 
     const action = el.dataset.action as Action;
     if (!action) return;
@@ -86,8 +89,6 @@ export function initRouter(): void {
         break;
       }
       case 'edit-bike-submit': {
-        const bikeId = el.dataset.bikeid;
-
         const form = (dom.editBikeForm as HTMLFormElement) || null;
         const bike = await readEditBikeForm(form);
 
@@ -100,8 +101,6 @@ export function initRouter(): void {
         break;
       }
       case 'log-odo-submit': {
-        const bikeId = el.dataset.bikeid;
-
         const form = (dom.logOdoForm as HTMLFormElement) || null;
         const odo = await readLogOdoForm(form);
 
@@ -132,11 +131,11 @@ export function initRouter(): void {
 
       /* Maintenance page */
       case 'show-maintenance-current': {
-        renderMaintenanceView('', true, false);
+        showCurrent();
         break;
       }
       case 'show-maintenance-history': {
-        renderMaintenanceView('', false, true);
+        showHistory();
         break;
       }
 
@@ -154,6 +153,8 @@ export function initRouter(): void {
       /** Edit bike modal */
       case 'open-edit-bike-modal': {
         const bikeId = el.dataset.bikeid;
+        console.log(bikeId);
+
         editBikeModal.open(bikeId);
         break;
       }

@@ -1,58 +1,87 @@
 export const dom = {
   /* Top bar */
-  topbar: document.querySelector<HTMLElement>('[data-testid="topbar"]'),
+  topbar: document.querySelector(
+    '[data-testid="topbar"]',
+  ) as HTMLElement | null,
+
+  /* Nav links */
+  navGarage: document.querySelector(
+    '[data-action="garage-page"]',
+  ) as HTMLAnchorElement | null,
+  navMaintenance: document.querySelector(
+    '[data-action="maintenance-page"]',
+  ) as HTMLAnchorElement | null,
+  navRepairs: document.querySelector(
+    '[data-action="repairs-page"]',
+  ) as HTMLAnchorElement | null,
+  navGuides: document.querySelector(
+    '[data-action="guides-page"]',
+  ) as HTMLAnchorElement | null,
+  navProfile: document.querySelector(
+    '[data-action="profile-page"]',
+  ) as HTMLAnchorElement | null,
 
   /* Screens */
-  authScreen: document.querySelector<HTMLElement>('.auth-view'),
-  garageScreen: document.querySelector<HTMLElement>(
+  authScreen: document.querySelector('.auth-view') as HTMLElement | null,
+  garageScreen: document.querySelector(
     '[data-testid="shell-garage"]',
-  ),
-  maintenanceScreen: document.querySelector<HTMLElement>(
+  ) as HTMLElement | null,
+  maintenanceScreen: document.querySelector(
     '[data-testid="shell-maintenance"]',
-  ),
+  ) as HTMLElement | null,
 
   /* Forms */
-  addBikeForm: document.querySelector<HTMLFormElement>(
+  loginForm: document.querySelector(
+    '[data-testid="form-login"]',
+  ) as HTMLFormElement | null,
+  registerForm: document.querySelector(
+    '[data-testid="form-register"]',
+  ) as HTMLElement | null,
+  addBikeForm: document.querySelector(
     '[data-testid="add-bike-form"]',
-  ),
-  editBikeForm: document.querySelector<HTMLFormElement>(
+  ) as HTMLFormElement | null,
+  editBikeForm: document.querySelector(
     '[data-testid="edit-bike-form"]',
-  ),
-  logOdoForm: document.querySelector<HTMLFormElement>(
+  ) as HTMLFormElement | null,
+  logOdoForm: document.querySelector(
     '[data-testid="log-odo-form"]',
-  ),
+  ) as HTMLFormElement | null,
 
   /* Login */
-  loginForm: document.querySelector<HTMLElement>('[data-testid="form-login"]'),
-  gotoLoginButton: document.querySelector<HTMLElement>(
+  gotoLoginButton: document.querySelector(
     '[data-testid="tab-login"]',
-  ),
-  loginButton: document.querySelector<HTMLElement>('[data-testid="btn-login"]'),
+  ) as HTMLElement | null,
+  loginButton: document.querySelector(
+    '[data-testid="btn-login"]',
+  ) as HTMLElement | null,
 
   /* Register */
-  registerForm: document.querySelector<HTMLElement>(
-    '[data-testid="form-register"]',
-  ),
-  gotoRegisterButton: document.querySelector<HTMLElement>(
+  gotoRegisterButton: document.querySelector(
     '[data-testid="tab-register"]',
-  ),
-  registerButton: document.querySelector<HTMLElement>(
+  ) as HTMLElement | null,
+  registerButton: document.querySelector(
     '[data-testid="btn-register"]',
-  ),
+  ) as HTMLElement | null,
 
   /* Garage */
-  garageGrid: document.querySelector<HTMLElement>(
+  garageGrid: document.querySelector(
     '[data-testid="garage-grid"]',
-  ),
+  ) as HTMLElement | null,
 
   /* Maintenance */
-  maintenancePanel: document.querySelector<HTMLElement>(
+  maintenancePanel: document.querySelector(
     '[data-testid="panel-maintenance"]',
-  ),
-  maintenanceShowCurrent: document.querySelector<HTMLElement>(
+  ) as HTMLElement | null,
+  maintenanceSelectBikeContainer: document.querySelector<HTMLSelectElement>(
+    '[data-testid="bike-select"]',
+  ) as HTMLSelectElement | null,
+  maintenanceShowCurrent: document.querySelector(
     '[data-testid="maintenance-current-list"]',
-  ),
-  maintenanceShowHistory: document.querySelector<HTMLElement>(
+  ) as HTMLElement | null,
+  maintenanceShowHistory: document.querySelector(
     '[data-testid="maintenance-history-list"]',
-  ),
+  ) as HTMLElement | null,
+  maintenanceHeaderContainer: document.querySelector(
+    '.maintenance-top__grid',
+  ) as HTMLElement | null,
 };

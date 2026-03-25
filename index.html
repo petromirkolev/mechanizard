@@ -242,7 +242,7 @@
             </div>
 
             <div class="garage-grid" data-testid="garage-grid">
-              <!-- INJECTED -->
+              <!-- INJECTED BIKE CARDS -->
             </div>
           </section>
         </main>
@@ -252,9 +252,10 @@
           class="page-shell is-hidden"
           id="maintenance"
           data-testid="shell-maintenance">
-          <select name="select-bike" id="bike-select" data-testid="bike-select">
-            <option value="">Select a bike</option>
-          </select>
+          <select
+            name="select-bike"
+            id="bike-select"
+            data-testid="bike-select"></select>
 
           <section
             class="panel maintenance-panel is-hidden"
@@ -285,113 +286,13 @@
             <div
               class="maintenance-card-grid"
               data-testid="maintenance-current-list">
-              <article class="card maintenance-item-card">
-                <h3>Oil &amp; Filter Change</h3>
-                <p class="muted">Engine oil and filter replacement</p>
-
-                <div class="maintenance-lines">
-                  <p><strong>Last:</strong> Never logged</p>
-                  <p><strong>Due:</strong> Not scheduled yet</p>
-                </div>
-
-                <div class="job-actions">
-                  <button
-                    type="button"
-                    data-action="open-log-maintenance-modal">
-                    Log Service
-                  </button>
-                  <button
-                    type="button"
-                    class="ghost"
-                    data-action="open-schedule-maintenance-modal">
-                    Schedule
-                  </button>
-                </div>
-              </article>
-
-              <article class="card maintenance-item-card">
-                <h3>Coolant Change</h3>
-                <p class="muted">Engine coolant replacement</p>
-
-                <div class="maintenance-lines">
-                  <p><strong>Last:</strong> Never logged</p>
-                  <p><strong>Due:</strong> Not scheduled yet</p>
-                </div>
-
-                <div class="job-actions">
-                  <button
-                    type="button"
-                    data-action="open-log-maintenance-modal">
-                    Log Service
-                  </button>
-                  <button
-                    type="button"
-                    class="ghost"
-                    data-action="open-schedule-maintenance-modal">
-                    Schedule
-                  </button>
-                </div>
-              </article>
-
-              <article class="card maintenance-item-card">
-                <h3>Brake Fluid Change</h3>
-                <p class="muted">Brake fluid flush and replacement</p>
-
-                <div class="maintenance-lines">
-                  <p><strong>Last:</strong> Never logged</p>
-                  <p><strong>Due:</strong> Not scheduled yet</p>
-                </div>
-
-                <div class="job-actions">
-                  <button
-                    type="button"
-                    data-action="open-log-maintenance-modal">
-                    Log Service
-                  </button>
-                  <button
-                    type="button"
-                    class="ghost"
-                    data-action="open-schedule-maintenance-modal">
-                    Schedule
-                  </button>
-                </div>
-              </article>
+              <!-- INJECTED MAINTENANCE CARDS-->
             </div>
 
             <div
               class="history-card-list is-hidden"
               data-testid="maintenance-history-list">
-              <article class="card bike-history-card">
-                <div class="bike-history-card__top">
-                  <div>
-                    <h4>Oil &amp; Filter Change</h4>
-                    <p class="muted">Honda Rebel</p>
-                  </div>
-
-                  <span class="odo-pill">1000 km</span>
-                </div>
-
-                <div class="history-lines">
-                  <p><strong>Date:</strong> 2026-03-18</p>
-                  <p><strong>Notes:</strong> Oil and filter replaced.</p>
-                </div>
-              </article>
-
-              <article class="card bike-history-card">
-                <div class="bike-history-card__top">
-                  <div>
-                    <h4>Chain Service</h4>
-                    <p class="muted">Honda Rebel</p>
-                  </div>
-
-                  <span class="odo-pill">850 km</span>
-                </div>
-
-                <div class="history-lines">
-                  <p><strong>Date:</strong> 2026-02-10</p>
-                  <p><strong>Notes:</strong> Cleaned and lubricated chain.</p>
-                </div>
-              </article>
+              <!-- INJECT MAINTENANCE HISTORY RECORDS-->
             </div>
           </section>
         </main>

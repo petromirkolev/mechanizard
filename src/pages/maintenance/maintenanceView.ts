@@ -2,58 +2,49 @@ import { dom } from '../../utils/dom';
 import { bikes } from '../../data/bikes';
 import type { Bike } from '../../types/bike';
 import { renderMaintenanceHeader } from '../../render/maintenance/renderMaintenanceHeader';
+import { historyItems, maintenanceItems } from '../../data/maintenance';
+import { renderMaintenanceCard } from '../../render/maintenance/renderMaintenanceCard';
+import { renderHistoryCard } from '../../render/maintenance/renderMaintenanceHistoryCard';
 
-export function renderMaintenanceView(
-  bikeId: string = '',
-  current: boolean = true,
-  history: boolean = false,
-) {
+export function renderMaintenanceView(bikeId: string | undefined) {
   const bike = bikes.find((bike) => bike.id === bikeId);
   if (!bike) return;
 
-  const maintenanceHeader: string = renderMaintenanceHeader(bike as Bike);
-  if (!maintenanceHeader) return;
+  const maintenanceHeaderContent: string = renderMaintenanceHeader(
+    bike as Bike,
+  );
+  if (!maintenanceHeaderContent) return;
 
-  const doc = document.querySelector('.maintenance-top__grid');
-  if (!doc) return;
+  if (!dom.maintenanceHeaderContainer) return;
+  dom.maintenanceHeaderContainer.innerHTML = '';
+  dom.maintenanceHeaderContainer.innerHTML = maintenanceHeaderContent;
 
-  doc.innerHTML = maintenanceHeader;
-
-  if (current) {
-    showCurrent();
-    return;
-  }
-
-  if (history) {
-    showHistory();
-    return;
-  }
+  showCurrent();
 }
 
 export function renderMaintenanceBikeSelect() {
-  const selectContainer = document.querySelector<HTMLSelectElement>(
-    '[data-testid="bike-select"]',
-  );
+  if (!dom.maintenanceSelectBikeContainer) return;
+  dom.maintenanceSelectBikeContainer.innerHTML = `<option value="">Select a bike</option>`;
 
   bikes.forEach((bike) => {
     const option = document.createElement('option');
     option.value = bike.id;
     option.dataset.bikeid = bike.id;
     option.innerText = `${bike.year} ${bike.make} ${bike.model}`;
-    selectContainer?.appendChild(option);
+    dom.maintenanceSelectBikeContainer?.appendChild(option);
   });
 
-  selectContainer?.addEventListener('change', () => {
-    const bikeId = selectContainer.value;
+  dom.maintenanceSelectBikeContainer.addEventListener('change', () => {
+    const bikeId = dom.maintenanceSelectBikeContainer?.value;
 
     if (!dom.maintenancePanel) return;
     dom.maintenancePanel.classList.remove('is-hidden');
 
-    renderMaintenanceView(bikeId, true, false);
+    renderMaintenanceView(bikeId);
   });
 }
 
-function showCurrent() {
+export function showCurrent() {
   document
     .querySelector('[data-action="show-maintenance-current"]')
     ?.classList.add('active');
@@ -62,9 +53,16 @@ function showCurrent() {
     ?.classList.remove('active');
   dom.maintenanceShowCurrent?.classList.remove('is-hidden');
   dom.maintenanceShowHistory?.classList.add('is-hidden');
+
+  (dom.maintenanceShowCurrent as HTMLElement).innerHTML = '';
+
+  maintenanceItems.forEach((item) => {
+    const maintenanceCard = renderMaintenanceCard(item);
+    (dom.maintenanceShowCurrent as HTMLElement).innerHTML += maintenanceCard;
+  });
 }
 
-function showHistory() {
+export function showHistory() {
   document
     .querySelector('[data-action="show-maintenance-current"]')
     ?.classList.remove('active');
@@ -73,4 +71,11 @@ function showHistory() {
     ?.classList.add('active');
   dom.maintenanceShowHistory?.classList.remove('is-hidden');
   dom.maintenanceShowCurrent?.classList.add('is-hidden');
+
+  (dom.maintenanceShowHistory as HTMLElement).innerHTML = '';
+
+  historyItems.forEach((item) => {
+    const historyCard = renderHistoryCard(item);
+    (dom.maintenanceShowHistory as HTMLElement).innerHTML += historyCard;
+  });
 }
