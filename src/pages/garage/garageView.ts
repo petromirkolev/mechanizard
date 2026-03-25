@@ -4,5 +4,9 @@ import { renderBikeCard } from '../../render/bikes/renderBikeCard';
 
 export function renderGarageView() {
   if (dom.garageGrid)
-    dom.garageGrid.innerHTML = bikes.map(renderBikeCard).join('');
+    if (bikes.length > 0) {
+      dom.garageGrid.innerHTML = bikes.map(renderBikeCard).join('');
+    } else {
+      dom.garageGrid.innerHTML = 'No bikes added to the garage yet.';
+    }
 }

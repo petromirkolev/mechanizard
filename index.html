@@ -229,7 +229,7 @@
             <div class="section-row section-row--page">
               <div>
                 <h2>Your Garage</h2>
-                <p class="muted"><!-- INJECTED --></p>
+                <p class="muted" id="garage-bike-count"><!-- INJECTED --></p>
               </div>
 
               <button
@@ -252,105 +252,33 @@
           class="page-shell is-hidden"
           id="maintenance"
           data-testid="shell-maintenance">
+          <select name="select-bike" id="bike-select" data-testid="bike-select">
+            <option value="">Select a bike</option>
+          </select>
+
           <section
-            class="panel maintenance-panel"
+            class="panel maintenance-panel is-hidden"
             data-testid="panel-maintenance">
             <div class="maintenance-top">
-              <div class="maintenance-top__back">
-                <button
-                  type="button"
-                  class="back-link ghost"
-                  data-action="go-back-garage">
-                  ← Back to Garage
-                </button>
-              </div>
-
-              <div class="maintenance-top__grid">
-                <article
-                  class="card maintenance-top-card maintenance-top-card--bike"
-                  data-testid="bike-summary-card">
-                  <div class="maintenance-top-card__body">
-                    <div>
-                      <h3>Honda</h3>
-                      <p class="muted">Rebel</p>
-                    </div>
-
-                    <div class="maintenance-top-card__bike-actions">
-                      <span class="odo-pill">1000 km</span>
-
-                      <div class="bike-card-actions">
-                        <button
-                          type="button"
-                          class="icon-action icon-action--edit"
-                          aria-label="Edit bike">
-                          <img
-                            src="./src/assets/icons/icon-edit-glyph.svg"
-                            alt="" />
-                        </button>
-
-                        <button
-                          type="button"
-                          class="icon-action icon-action--log"
-                          aria-label="Log current odometer">
-                          <img
-                            src="./src/assets/icons/icon-log-odo-glyph.svg"
-                            alt="" />
-                        </button>
-
-                        <button
-                          type="button"
-                          class="icon-action icon-action--delete"
-                          aria-label="Delete bike">
-                          <img
-                            src="./src/assets/icons/icon-delete-glyph.svg"
-                            alt="" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article
-                  class="card maintenance-top-card maintenance-top-card--stat">
-                  <div class="stat-card__icon stat-card__icon--danger">
-                    <img
-                      src="./src/assets/icons/icon-overdue-glyph.svg"
-                      alt="" />
-                  </div>
-                  <strong>0</strong>
-                  <span class="muted">Overdue</span>
-                </article>
-
-                <article
-                  class="card maintenance-top-card maintenance-top-card--stat">
-                  <div class="stat-card__icon stat-card__icon--warn">
-                    <img
-                      src="./src/assets/icons/icon-due-soon-glyph.svg"
-                      alt="" />
-                  </div>
-                  <strong>0</strong>
-                  <span class="muted">Due Soon</span>
-                </article>
-
-                <article
-                  class="card maintenance-top-card maintenance-top-card--stat">
-                  <div class="stat-card__icon stat-card__icon--ok">
-                    <img
-                      src="./src/assets/icons/icon-on-track-glyph.svg"
-                      alt="" />
-                  </div>
-                  <strong>0</strong>
-                  <span class="muted">On Track</span>
-                </article>
-              </div>
+              <div class="maintenance-top__grid"></div>
             </div>
 
             <div class="section-row section-row--page">
               <h3>Maintenance Items</h3>
 
               <div class="view-switch">
-                <button class="switch-btn active" type="button">Current</button>
-                <button class="switch-btn" type="button">History</button>
+                <button
+                  class="switch-btn active"
+                  type="button"
+                  data-action="show-maintenance-current">
+                  Current
+                </button>
+                <button
+                  class="switch-btn"
+                  type="button"
+                  data-action="show-maintenance-history">
+                  History
+                </button>
               </div>
             </div>
 
@@ -431,7 +359,7 @@
             </div>
 
             <div
-              class="history-card-list"
+              class="history-card-list is-hidden"
               data-testid="maintenance-history-list">
               <article class="card bike-history-card">
                 <div class="bike-history-card__top">

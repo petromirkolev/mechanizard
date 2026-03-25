@@ -1,8 +1,8 @@
 export const dom = {
-  // Topbar
+  /* Top bar */
   topbar: document.querySelector<HTMLElement>('[data-testid="topbar"]'),
 
-  // Screens
+  /* Screens */
   authScreen: document.querySelector<HTMLElement>('.auth-view'),
   garageScreen: document.querySelector<HTMLElement>(
     '[data-testid="shell-garage"]',
@@ -11,7 +11,7 @@ export const dom = {
     '[data-testid="shell-maintenance"]',
   ),
 
-  // Forms
+  /* Forms */
   addBikeForm: document.querySelector<HTMLFormElement>(
     '[data-testid="add-bike-form"]',
   ),
@@ -22,14 +22,14 @@ export const dom = {
     '[data-testid="log-odo-form"]',
   ),
 
-  // Login
+  /* Login */
   loginForm: document.querySelector<HTMLElement>('[data-testid="form-login"]'),
   gotoLoginButton: document.querySelector<HTMLElement>(
     '[data-testid="tab-login"]',
   ),
   loginButton: document.querySelector<HTMLElement>('[data-testid="btn-login"]'),
 
-  // Register
+  /* Register */
   registerForm: document.querySelector<HTMLElement>(
     '[data-testid="form-register"]',
   ),
@@ -40,12 +40,15 @@ export const dom = {
     '[data-testid="btn-register"]',
   ),
 
-  // Garage
+  /* Garage */
   garageGrid: document.querySelector<HTMLElement>(
     '[data-testid="garage-grid"]',
   ),
 
-  // Maintenance
+  /* Maintenance */
+  maintenancePanel: document.querySelector<HTMLElement>(
+    '[data-testid="panel-maintenance"]',
+  ),
   maintenanceShowCurrent: document.querySelector<HTMLElement>(
     '[data-testid="maintenance-current-list"]',
   ),

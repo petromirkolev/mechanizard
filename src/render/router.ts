@@ -1,7 +1,7 @@
 import { dom } from '../utils/dom';
 import type { Action } from '../types/action';
 import { renderLoginPage, renderRegisterPage } from '../pages/auth/authView';
-import { initGaragePage } from '../pages/garage/garageEvents';
+import { editBike, logOdo } from '../pages/garage/garageEvents';
 import { showScreen } from '../utils/show-screen';
 import {
   readAddBikeForm,
@@ -14,6 +14,10 @@ import { logOdoModal } from '../modals/logOdoModal';
 import { deleteBikeModal } from '../modals/deleteBikeModal';
 import { editBikeModal } from '../modals/editBikeModal';
 import { renderGarageView } from '../pages/garage/garageView';
+import {
+  renderMaintenanceView,
+  renderMaintenanceBikeSelect,
+} from '../pages/maintenance/maintenanceView';
 
 export function initRouter(): void {
   document.addEventListener('click', async (e: MouseEvent) => {
@@ -28,7 +32,7 @@ export function initRouter(): void {
     console.log(action);
 
     switch (action) {
-      // Auth
+      /* Auth */
       case 'show-login-form': {
         showScreen('auth');
         renderLoginPage();
@@ -49,7 +53,8 @@ export function initRouter(): void {
         renderGarageView();
         break;
       }
-      // Top bar
+
+      /* Top bar */
       case 'garage-page': {
         showScreen('garage');
         renderGarageView();
@@ -57,6 +62,7 @@ export function initRouter(): void {
       }
       case 'maintenance-page': {
         showScreen('maintenance');
+        renderMaintenanceBikeSelect();
         break;
       }
       case 'logout': {
@@ -64,7 +70,8 @@ export function initRouter(): void {
         renderLoginPage();
         break;
       }
-      // Garage page
+
+      /* Garage page */
       case 'add-bike-submit': {
         const form = (dom.addBikeForm as HTMLFormElement) || null;
         const bike = await readAddBikeForm(form);
@@ -75,32 +82,47 @@ export function initRouter(): void {
         form.reset();
         addBikeModal.close();
 
-        initGaragePage();
+        renderGarageView();
         break;
       }
       case 'edit-bike-submit': {
+        const bikeId = el.dataset.bikeid;
+
         const form = (dom.editBikeForm as HTMLFormElement) || null;
         const bike = await readEditBikeForm(form);
 
-        console.log(bike);
+        editBike(bikeId, bike);
 
         form.reset();
         editBikeModal.close();
+        renderGarageView();
 
         break;
       }
       case 'log-odo-submit': {
-        const form = (dom.logOdoForm as HTMLFormElement) || null;
-        const bike = await readLogOdoForm(form);
+        const bikeId = el.dataset.bikeid;
 
-        console.log(bike);
+        const form = (dom.logOdoForm as HTMLFormElement) || null;
+        const odo = await readLogOdoForm(form);
+
+        logOdo(bikeId, odo);
 
         form.reset();
         logOdoModal.close();
+        renderGarageView();
 
         break;
       }
       case 'confirm-bike-delete': {
+        const bikeId = el.dataset.bikeid;
+
+        const index = bikes.findIndex((bike) => bike.id === bikeId);
+
+        bikes.splice(index, 1);
+
+        deleteBikeModal.close();
+        renderGarageView();
+
         break;
       }
       case 'reject-bike-delete': {
@@ -108,10 +130,18 @@ export function initRouter(): void {
         break;
       }
 
-      // Maintenance page
+      /* Maintenance page */
+      case 'show-maintenance-current': {
+        renderMaintenanceView('', true, false);
+        break;
+      }
+      case 'show-maintenance-history': {
+        renderMaintenanceView('', false, true);
+        break;
+      }
 
-      // Modals
-      /// Add bike modal
+      /* Modals */
+      /** Add bike modal */
       case 'open-add-bike-modal': {
         addBikeModal.open();
         break;
@@ -120,34 +150,39 @@ export function initRouter(): void {
         addBikeModal.close();
         break;
       }
-      /// Edit bike modal
+
+      /** Edit bike modal */
       case 'open-edit-bike-modal': {
-        editBikeModal.open('1');
+        const bikeId = el.dataset.bikeid;
+        editBikeModal.open(bikeId);
         break;
       }
       case 'close-edit-bike-modal': {
         editBikeModal.close();
         break;
       }
-      /// Log odo modal
+
+      /** Log odo modal */
       case 'open-log-odo-modal': {
-        logOdoModal.open();
+        const bikeId = el.dataset.bikeid;
+        logOdoModal.open(bikeId);
         break;
       }
       case 'close-log-odo-modal': {
         logOdoModal.close();
         break;
       }
-      /// Delete bike modal
+
+      /** Delete bike modal */
       case 'open-delete-bike-modal': {
-        deleteBikeModal.open();
+        const bikeId = el.dataset.bikeid;
+        deleteBikeModal.open(bikeId);
         break;
       }
       case 'close-delete-bike-modal': {
         deleteBikeModal.close();
         break;
       }
-
       default:
         break;
     }

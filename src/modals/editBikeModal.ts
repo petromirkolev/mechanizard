@@ -4,9 +4,15 @@ const modal = document.getElementById('modal-edit-bike');
 if (!modal) throw new Error('Modal not found');
 
 export const editBikeModal = {
-  open(bikeId: string) {
+  open(bikeId: string | undefined) {
     const bike = bikes.find((bike) => bike.id === bikeId);
     if (!bike) return;
+
+    const editBtn = document.querySelector<HTMLButtonElement>(
+      '[data-action="edit-bike-submit"]',
+    );
+    if (!editBtn) return;
+    editBtn.dataset.bikeid = bikeId;
 
     const make = document.getElementById(
       'edit-bike-make',
