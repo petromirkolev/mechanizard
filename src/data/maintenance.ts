@@ -36,4 +36,13 @@ export const historyItems = [
     date: '2026-03-04',
     notes: 'Engine cooling system flushed and coolant changed.',
   },
+
+  {
+    bike_id: '2',
+    name: 'Coolant change',
+    description: 'Engine coolant replacement',
+    odo: '1250',
+    date: '2026-03-04',
+    notes: 'Engine cooling system flushed and coolant changed.',
+  },
 ];

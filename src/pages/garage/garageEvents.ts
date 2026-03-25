@@ -1,16 +1,11 @@
 import { bikes } from '../../data/bikes';
+import { readAddBikeForm } from '../../utils/forms';
 
-export function initGaragePage(): void {
-  const menuButton = document.querySelector('[data-testid="btn-mobile-menu"]');
-  const mobileMenu = document.querySelector('[data-testid="mobile-menu"]');
+export async function addBike(form: any) {
+  const bike = await readAddBikeForm(form);
+  const id = String(Math.round(Math.random() * 10));
 
-  if (menuButton && mobileMenu) {
-    menuButton.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.contains('is-hidden');
-      mobileMenu.classList.toggle('is-hidden');
-      menuButton.setAttribute('aria-expanded', String(isHidden));
-    });
-  }
+  bikes.push({ id, ...bike });
 }
 
 export function editBike(bikeId: string | undefined, data: any) {
@@ -25,11 +20,16 @@ export function editBike(bikeId: string | undefined, data: any) {
   });
 }
 
-export function logOdo(bikeId: string | undefined, odo: number) {
+export function logBikeOdo(bikeId: string | undefined, odo: number) {
   bikes.find((bike) => {
     if (bike.id === bikeId) {
       bike.odo = odo;
     }
     return;
   });
+}
+
+export function deleteBike(bikeId: string | undefined) {
+  const index = bikes.findIndex((bike) => bike.id === bikeId);
+  bikes.splice(index, 1);
 }

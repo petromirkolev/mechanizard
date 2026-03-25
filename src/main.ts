@@ -5,11 +5,11 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/pages.css';
 
-import { initRouter } from './render/router';
+import { router } from './routing/router';
 import { renderLoginPage } from './pages/auth/authView';
 
 function bootstrapApp(): void {
-  initRouter();
+  router();
   renderLoginPage();
 }
 

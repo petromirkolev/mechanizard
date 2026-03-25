@@ -8,6 +8,9 @@ export type Action =
   /* Top bar */
   | 'garage-page'
   | 'maintenance-page'
+  | 'repairs-page'
+  | 'guides-page'
+  | 'profile-page'
   | 'logout'
 
   /* Garage */
