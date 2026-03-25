@@ -7,6 +7,8 @@ import { renderMaintenanceCard } from '../../render/maintenance/renderMaintenanc
 import { renderHistoryCard } from '../../render/maintenance/renderMaintenanceHistoryCard';
 
 export function renderMaintenanceView(bikeId: string | undefined) {
+  (dom.maintenancePanel as HTMLElement).classList.remove('is-hidden');
+
   const bike = bikes.find((bike) => bike.id === bikeId);
   if (!bike) return;
 
@@ -36,9 +38,6 @@ export function renderMaintenanceBikeSelect() {
 
   dom.maintenanceSelectBikeContainer.addEventListener('change', () => {
     const bikeId = dom.maintenanceSelectBikeContainer?.value;
-
-    if (!dom.maintenancePanel) return;
-    dom.maintenancePanel.classList.remove('is-hidden');
 
     renderMaintenanceView(bikeId);
   });

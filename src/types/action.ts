@@ -12,6 +12,7 @@ export type Action =
 
   /* Garage */
   | 'add-bike-submit'
+  | 'open-bike-maintenance'
 
   /* Maintenance */
   | 'show-maintenance-current'
@@ -36,4 +37,10 @@ export type Action =
   | 'open-delete-bike-modal'
   | 'close-delete-bike-modal'
   | 'confirm-bike-delete'
-  | 'reject-bike-delete';
+  | 'reject-bike-delete'
+
+  /** Log maintenance modal */
+  | 'open-log-maintenance-modal'
+  | 'close-log-maintenance-modal'
+  | 'open-schedule-maintenance-modal'
+  | 'close-schedule-maintenance-modal';

@@ -663,35 +663,34 @@
             <button
               type="button"
               class="ghost modal-close"
+              data-action="close-log-maintenance-modal"
               data-close-modal="modal-add-maintenance">
               ✕
             </button>
           </div>
 
           <form class="form-card">
-            <label for="maintenance-bike">
-              Bike
-              <select id="maintenance-bike">
-                <option>Select bike</option>
-              </select>
+            <label for="log-odo">
+              Odo
+              <input type="number" required />
             </label>
 
-            <label for="maintenance-type">
-              Service type
-              <select id="maintenance-type">
-                <option>Select service type</option>
-              </select>
+            <label for="log-date">
+              Date
+              <input type="date" required />
             </label>
 
-            <label for="maintenance-note">
-              Note
+            <label for="log-note">
+              *Note
               <textarea
                 id="maintenance-note"
                 rows="4"
-                placeholder="What is this maintenance item?"></textarea>
+                placeholder="Any details related to the service"></textarea>
             </label>
 
-            <button type="button">Save maintenance</button>
+            <button type="button" data-action="close-log-maintenance-modal">
+              Save maintenance
+            </button>
           </form>
         </div>
       </div>
@@ -703,6 +702,7 @@
             <button
               type="button"
               class="ghost modal-close"
+              data-action="close-schedule-maintenance-modal"
               data-close-modal="modal-schedule-maintenance">
               ✕
             </button>
@@ -727,7 +727,11 @@
                 placeholder="Optional scheduling note"></textarea>
             </label>
 
-            <button type="button">Save schedule</button>
+            <button
+              type="button"
+              data-action="close-schedule-maintenance-modal">
+              Save schedule
+            </button>
           </form>
         </div>
       </div>

@@ -16,9 +16,13 @@ import { editBikeModal } from '../modals/editBikeModal';
 import { renderGarageView } from '../pages/garage/garageView';
 import {
   renderMaintenanceBikeSelect,
+  renderMaintenanceView,
   showCurrent,
   showHistory,
 } from '../pages/maintenance/maintenanceView';
+import { renderMaintenanceHeader } from './maintenance/renderMaintenanceHeader';
+import { logMaintenanceModal } from '../modals/logMaintenanceModal';
+import { scheduleMaintenanceModal } from '../modals/scheduleMaintenanceModal';
 
 export function initRouter(): void {
   document.addEventListener('click', async (e: MouseEvent) => {
@@ -80,7 +84,7 @@ export function initRouter(): void {
         const bike = await readAddBikeForm(form);
         const id = String(Math.round(Math.random() * 10));
 
-        bikes.push({ ...bike, id });
+        bikes.push({ id, ...bike });
 
         form.reset();
         addBikeModal.close();
@@ -126,6 +130,12 @@ export function initRouter(): void {
       }
       case 'reject-bike-delete': {
         deleteBikeModal.close();
+        break;
+      }
+      case 'open-bike-maintenance': {
+        showScreen('maintenance');
+        renderMaintenanceBikeSelect();
+        renderMaintenanceView(bikeId);
         break;
       }
 
@@ -182,6 +192,26 @@ export function initRouter(): void {
       }
       case 'close-delete-bike-modal': {
         deleteBikeModal.close();
+        break;
+      }
+
+      /** Log maintenance modal */
+      case 'open-log-maintenance-modal': {
+        logMaintenanceModal.open();
+        break;
+      }
+      case 'close-log-maintenance-modal': {
+        logMaintenanceModal.close();
+        break;
+      }
+
+      /** Schedule maintenance modal */
+      case 'open-schedule-maintenance-modal': {
+        scheduleMaintenanceModal.open();
+        break;
+      }
+      case 'close-schedule-maintenance-modal': {
+        scheduleMaintenanceModal.close();
         break;
       }
       default:

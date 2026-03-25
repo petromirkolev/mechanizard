@@ -3,7 +3,8 @@ import type { Bike } from '../../types/bike';
 export function renderBikeCard(bike: Bike): string {
   return `
     <article class="card garage-bike-card is-clickable" data-testid="garage-bike-card-${bike.id}">
-      <button type="button" class="garage-bike-card__link" data-action="open-bike-maintenance">
+      <button type="button" class="garage-bike-card__link" data-action="open-bike-maintenance"
+      data-bikeid="${bike.id}">
         <div class="garage-bike-card__content">
           <div>
             <h3>${bike.make}</h3>
