@@ -20,7 +20,6 @@ import {
   showCurrent,
   showHistory,
 } from '../pages/maintenance/maintenanceView';
-import { renderMaintenanceHeader } from './maintenance/renderMaintenanceHeader';
 import { logMaintenanceModal } from '../modals/logMaintenanceModal';
 import { scheduleMaintenanceModal } from '../modals/scheduleMaintenanceModal';
 

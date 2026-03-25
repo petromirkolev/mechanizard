@@ -18,7 +18,6 @@ const NAV_LINKS = {
 function setHidden(el: HTMLElement | null, hidden: boolean) {
   if (!el) return;
   el.classList.toggle('is-hidden', hidden);
-  console.log(el);
 }
 
 function clearActiveNav(): void {
