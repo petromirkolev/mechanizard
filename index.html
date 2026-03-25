@@ -15,11 +15,12 @@
   <body>
     <div id="app" data-testid="app-root">
       <!-- TOPBAR -->
-      <header class="topbar" data-testid="topbar">
+      <header class="topbar is-hidden" data-testid="topbar">
         <div class="brand" data-testid="brand-app">
           <img
             src="./src/assets/mechanizard-logo.png"
             alt="MechaniZard logo"
+            data-action="home"
             class="brand-logo"
             data-testid="logo-app" />
           <div>
@@ -31,15 +32,29 @@
         </div>
 
         <nav class="topnav desktop-only" data-testid="nav-main">
-          <a href="#garage" class="nav-link active">Garage</a>
-          <a href="#maintenance" class="nav-link">Maintenance</a>
-          <a href="#repairs" class="nav-link">Repairs</a>
-          <a href="#guides" class="nav-link">Guides</a>
-          <a href="#profile" class="nav-link">Profile</a>
+          <a href="#garage" data-action="garage-page" class="nav-link active"
+            >Garage</a
+          >
+          <a href="#maintenance" data-action="maintenance-page" class="nav-link"
+            >Maintenance</a
+          >
+          <a href="#repairs" data-action="repairs-page" class="nav-link"
+            >Repairs</a
+          >
+          <a href="#guides" data-action="guides-page" class="nav-link"
+            >Guides</a
+          >
+          <a href="#profile" data-action="profile-page" class="nav-link"
+            >Profile</a
+          >
         </nav>
 
         <div class="topbar-actions desktop-only" data-testid="topbar-actions">
-          <button type="button" class="ghost" data-testid="btn-logout-topbar">
+          <button
+            type="button"
+            data-action="logout"
+            class="ghost"
+            data-testid="btn-logout-topbar">
             Logout
           </button>
         </div>
@@ -70,7 +85,7 @@
       </header>
 
       <!-- AUTH VIEW -->
-      <main class="auth-view is-hidden" data-testid="page-auth">
+      <main class="auth-view" data-testid="page-auth">
         <section class="auth-shell auth-shell-split" data-testid="auth-shell">
           <div class="auth-hero auth-hero-left" data-testid="auth-hero">
             <div class="brand brand-large" data-testid="brand-auth">
@@ -214,7 +229,7 @@
             <div class="section-row section-row--page">
               <div>
                 <h2>Your Garage</h2>
-                <p class="muted">2 motorcycles</p>
+                <p class="muted"><!-- INJECTED --></p>
               </div>
 
               <button
@@ -226,102 +241,14 @@
             </div>
 
             <div class="garage-grid" data-testid="garage-grid">
-              <article
-                class="card garage-bike-card is-clickable"
-                data-testid="garage-bike-card-1">
-                <button
-                  type="button"
-                  class="garage-bike-card__link"
-                  data-action="open-bike-maintenance">
-                  <div class="garage-bike-card__content">
-                    <div>
-                      <h3>Honda</h3>
-                      <p class="muted">2021 Honda Rebel</p>
-                    </div>
-
-                    <span class="odo-pill">1000 km</span>
-                  </div>
-                </button>
-
-                <div class="garage-bike-card__footer">
-                  <button
-                    type="button"
-                    class="icon-action icon-action--edit"
-                    aria-label="Edit bike">
-                    <img src="./src/assets/icons/icon-edit-glyph.svg" alt="" />
-                  </button>
-
-                  <button
-                    type="button"
-                    class="icon-action icon-action--log"
-                    aria-label="Log current odometer">
-                    <img
-                      src="./src/assets/icons/icon-log-odo-glyph.svg"
-                      alt="" />
-                  </button>
-
-                  <button
-                    type="button"
-                    class="icon-action icon-action--delete"
-                    aria-label="Delete bike">
-                    <img
-                      src="./src/assets/icons/icon-delete-glyph.svg"
-                      alt="" />
-                  </button>
-                </div>
-              </article>
-
-              <article
-                class="card garage-bike-card is-clickable"
-                data-testid="garage-bike-card-1">
-                <button
-                  type="button"
-                  class="garage-bike-card__link"
-                  data-action="open-bike-maintenance">
-                  <div class="garage-bike-card__content">
-                    <div>
-                      <h3>Honda</h3>
-                      <p class="muted">2021 Honda Rebel</p>
-                    </div>
-
-                    <span class="odo-pill">1000 km</span>
-                  </div>
-                </button>
-
-                <div class="garage-bike-card__footer">
-                  <button
-                    type="button"
-                    class="icon-action icon-action--edit"
-                    aria-label="Edit bike">
-                    <img src="./src/assets/icons/icon-edit-glyph.svg" alt="" />
-                  </button>
-
-                  <button
-                    type="button"
-                    class="icon-action icon-action--log"
-                    aria-label="Log current odometer">
-                    <img
-                      src="./src/assets/icons/icon-log-odo-glyph.svg"
-                      alt="" />
-                  </button>
-
-                  <button
-                    type="button"
-                    class="icon-action icon-action--delete"
-                    aria-label="Delete bike">
-                    <img
-                      src="./src/assets/icons/icon-delete-glyph.svg"
-                      alt="" />
-                  </button>
-                </div>
-              </article>
+              <!-- INJECTED -->
             </div>
           </section>
         </main>
 
         <!-- MAINTENANCE -->
         <main
-          class="page-shell"
+          class="page-shell is-hidden"
           id="maintenance"
           data-testid="shell-maintenance">
           <section
