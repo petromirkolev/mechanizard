@@ -29,6 +29,15 @@ export const dom = {
   maintenanceScreen: document.querySelector(
     '[data-testid="shell-maintenance"]',
   ) as HTMLElement | null,
+  repairsScreen: document.querySelector(
+    '[data-testid="shell-repairs"]',
+  ) as HTMLElement | null,
+  guidesScreen: document.querySelector(
+    '[data-testid="shell-guides"]',
+  ) as HTMLElement | null,
+  profileScreen: document.querySelector(
+    '[data-testid="shell-profile"]',
+  ) as HTMLElement | null,
 
   /* Forms */
   loginForm: document.querySelector(

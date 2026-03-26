@@ -71,6 +71,18 @@ export function initRouter(): void {
         renderMaintenanceBikeSelect();
         break;
       }
+      case 'repairs-page': {
+        showScreen('repairs');
+        break;
+      }
+      case 'guides-page': {
+        showScreen('guides');
+        break;
+      }
+      case 'profile-page': {
+        showScreen('profile');
+        break;
+      }
       case 'logout': {
         showScreen('auth');
         renderLoginPage();
@@ -123,6 +135,7 @@ export function initRouter(): void {
         bikes.splice(index, 1);
 
         deleteBikeModal.close();
+        showScreen('garage');
         renderGarageView();
 
         break;

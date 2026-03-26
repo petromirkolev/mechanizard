@@ -1,6 +1,12 @@
 import { dom } from './dom';
 
-export type Screen = 'auth' | 'garage' | 'maintenance';
+export type Screen =
+  | 'auth'
+  | 'garage'
+  | 'maintenance'
+  | 'repairs'
+  | 'guides'
+  | 'profile';
 export type AuthMode = 'login' | 'register';
 export type MaintenanceMode = 'maintenance-log' | 'maintenance-history';
 
@@ -8,11 +14,17 @@ const SCREENS: Record<Screen, HTMLElement | null> = {
   auth: dom.authScreen,
   garage: dom.garageScreen,
   maintenance: dom.maintenanceScreen,
+  repairs: dom.repairsScreen,
+  guides: dom.guidesScreen,
+  profile: dom.profileScreen,
 };
 
 const NAV_LINKS = {
   garage: dom.navGarage,
   maintenance: dom.navMaintenance,
+  repairs: dom.repairsScreen,
+  guides: dom.guidesScreen,
+  profile: dom.profileScreen,
 };
 
 function setHidden(el: HTMLElement | null, hidden: boolean) {
